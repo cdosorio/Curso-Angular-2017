@@ -1,0 +1,147 @@
+<h4>Formularios <small>template</small></h4>
+<hr>
+
+<form novalidate="" (ngSubmit)="guardar(forma)" #forma="ngForm">
+
+  <div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">
+
+        <input class="form-control"
+        [ngClass]="{'is-invalid': (nombre.errors?.required || nombre.errors?.minlength) && nombre.touched}"
+               type="text"
+               placeholder="Nombre"
+               name="nombre"
+               [(ngModel)]="usuario.nombre"
+               minlength="5"
+               required
+               #nombre="ngModel">
+               <!-- El caracter # permite crear una variable local   -->
+               <div *ngIf="nombre.errors?.required" class="invalid-feedback">
+                 Este campo es requerido
+                </div>
+               <div *ngIf="nombre.errors?.minlength" class="invalid-feedback">
+                 Por lo menos {{ nombre.errors.minlength.requiredLength }} caracteres
+                </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Apellido</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Apellido"
+               name="apellido"
+               [(ngModel)]="usuario.apellido"               
+               required
+               #apellido="ngModel">
+               <div *ngIf="apellido.errors?.required" >
+                  Este campo es requerido
+                 </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Correo</label>
+    <div class="col-md-8">
+
+      <input class="form-control"
+             type="email"
+             placeholder="Correo electrónico"
+             name="correo"
+             [(ngModel)]="usuario.correo"             
+             required
+             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+             #correo="ngModel">
+             <div *ngIf="correo.errors?.required" >
+                Este campo es requerido
+               </div>
+             <div *ngIf="correo.errors?.pattern">
+                Debe tener formato de correo valido 
+               </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Pais</label>
+    <div class="col-8">
+      <select class="form-control" name="pais" [(ngModel)]="usuario.pais">
+          <option value="">Seleccione un pais</option>
+          <option *ngFor="let pais of paises" 
+            [value]="pais.codigo">{{ pais.nombre}}</option> 
+      </select>     
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Sexo</label>
+    <div class="col-8">
+        <div class="form-check form-check-inline">
+            <label class="form-check-label" *ngFor="let s of sexos">
+              <input class="form-check-input" type="radio" name="sexo" [value]="s" [(ngModel)]="usuario.sexo"> {{s}}
+            </label>
+          </div>
+          
+         <!--  <div class="form-check form-check-inline">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="sexo" value="Mujer" [(ngModel)]="usuario.sexo"> Mujer
+            </label>
+          </div> -->
+
+    </div>
+  </div>
+
+  <div class="form-group row">
+      <label class="col-2 col-form-label">Acepta</label>
+      <div class="col-8">
+          <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input [(ngModel)]="usuario.acepta"
+                      name="acepta"
+                      class="form-check-input" type="checkbox"
+                      required > Acepta las condiciones
+              </label>
+            </div>
+      </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">        
+      <button       
+        type="submit" 
+        class="btn btn-outline-primary"
+        [disabled]="!forma.valid">
+        Guardar
+      </button>
+      <button type="reset" class="btn btn-outline-secondary">
+        Limpiar
+      </button>
+    </div>
+  </div>
+
+</form>
+<div class="alert alert-success" role="alert">
+<pre>
+  {{ usuario | json }}
+</pre>
+</div>
+<div class="alert alert-primary" role="alert">
+con la caja de bananas (), aparte de escuchar, también va a emitir los cambios
+</div>
+<div class="alert alert-secondary" role="alert">
+<pre>
+    2 formas para usar el "let s of sexos": 
+    1) con enlace a las propiedades :[value]="s"
+    2) con interpolación:  value= {{s}}
+  </pre>
+</div>
+<div class="alert alert-primary" role="alert">
+  El novalidate es para que no valide desde el html.
+  </div>
