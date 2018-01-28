@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PeliculasService } from "../../services/peliculas.service";
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-home',
@@ -8,14 +9,21 @@ import { PeliculasService } from "../../services/peliculas.service";
 })
 export class HomeComponent {
 
-  peliculas: any[] = [];
-
+  cartelera: any[] = [];
+  populares: any[] = [];
+  
   constructor(public _ps:PeliculasService){
-    this._ps.getPopulares()
+    
+    this._ps.getEnCartelera()
             .subscribe(data => {
-              console.log(data);
-              this.peliculas = data.results;        
+              //console.log(data);
+              this.cartelera = data.results;        
             });
+
+    this._ps.getPopulares()
+          .subscribe(data => {            
+            this.populares = data.results;        
+          });
   }
 
 }

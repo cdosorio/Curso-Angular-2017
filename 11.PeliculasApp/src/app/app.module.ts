@@ -16,6 +16,8 @@ import { BuscarComponent } from './components/buscar/buscar.component';
 import { PeliculaComponent } from './components/pelicula/pelicula.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { KeysPipe } from './pipes/keys.pipe';
+import { PeliculaImagenPipe } from './pipes/pelicula-imagen.pipe';
+import { GaleriaComponent } from './components/home/galeria.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { KeysPipe } from './pipes/keys.pipe';
     BuscarComponent,
     PeliculaComponent,
     NavbarComponent,
-    KeysPipe
+    KeysPipe,
+    PeliculaImagenPipe,
+    GaleriaComponent
   ],
   imports: [
     BrowserModule,

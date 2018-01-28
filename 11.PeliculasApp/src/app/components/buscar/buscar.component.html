@@ -1,3 +1,22 @@
-<p>
-  buscar works!
-</p>
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>Buscar:</label>
+        <input type="text" placeholder="titulo..." class="form-control" [(ngModel)]="titulo" (keyup.enter)="buscarPorTitulo()">
+      </div>
+    </div>
+  </div>
+
+  <div class="card-columns animated fadeIn">
+    <div class="card" *ngFor="let pelicula of peliculas">
+      <img class="card-img" [src]="pelicula|peliculaImagen" [alt]="pelicula.original_title">
+      <div class="card-img-overlay puntero" [routerLink]="[ '/pelicula', pelicula.id, 'buscar', titulo ]">
+        <p class="card-text text-white"> {{ pelicula.title}}</p>
+      </div>      
+        <p class="card-text text-justify">{{pelicula.overview | slice:0:250}}...</p>
+     
+    </div>
+  </div>
+</div>

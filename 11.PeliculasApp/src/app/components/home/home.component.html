@@ -1,19 +1,13 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">PelisApp</h1>
-    <p class="lead">Esta es una app de peliculas</p>
+    <h1>PeliculasAPP</h1>
+    <p class="lead">Esta es una aplicación de pelí­culas</p>
   </div>
 </div>
-<br>
-<h3>Peliculas en cartelera</h3>
-<!-- <div class="card bg-dark text-white" *ngFor="let k of peliculas| keys; let i = index">
-  <img class="card-img" [src]="image.tmdb.org/t/p/w300 + peliculas[k].backdrop_path" alt="Card image">
-  <div class="card-img-overlay">
-    <p class="card-text"> {{ peliculas[k].title}}</p>
-  </div>
-</div> -->
 
-<ul>
-<li *ngFor="let k of peliculas| keys;">{{ peliculas[k].title}}</li>
-</ul>
+<div class="container">
+  
+  <app-galeria [peliculas]="cartelera|slice:0:6" titulo="Peliculas en cartelera"></app-galeria> 
 
+  <app-galeria [peliculas]="populares|slice:0:6" titulo="Populares"></app-galeria> 
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PeliculasService } from "../../../services/peliculas.service";   
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -8,15 +8,14 @@ import { PeliculasService } from "../../../services/peliculas.service";
 })
 export class NavbarComponent {
 
-  constructor(public _ps:PeliculasService) { }
+  constructor(private router:Router) { }
 
   buscarPelicula( texto:string){
     if (texto.length == 0){
       return ;
     }
 
-    this._ps.buscarPelicula(texto)
-        .subscribe( data => console.log(data) )
+    this.router.navigate(['buscar',texto])
   }
 
 }

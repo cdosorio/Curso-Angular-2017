@@ -11,7 +11,7 @@ export class SpotifyService {
   toptracks: any[] = [];
   
   urlSpotify: string = 'https://api.spotify.com/v1/';
-  token: string = 'BQDBZfQygYmu5rLpLQ3YvzDU4NLZm9KeLv01jbpNoyqRUBI6VZS1reKj_fdhLg8MQveXgvAeDsSisIBtoNNAaQ';
+  token: string = 'BQAyZRHMuZasa6F-ed9Ah1CgDk9Y6P1x6qsfVMAxzJzRsxM-PdLGriJua0u_LiBWxS-BtvUvugF7lQ5N3IwqHtvv6vrii4xnu-Fw1r0C_ng0_bKr8wL0Plsaihxm-K16qqD5IGh3cHERwwI';
 
 
   constructor(public _http: HttpClient) {  }

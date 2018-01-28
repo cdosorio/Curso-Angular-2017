@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" >
+  <a class="navbar-brand text-light" >
     PelisApp
   </a>
 
@@ -10,13 +10,12 @@
       </li>
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="buscar">Buscar</a>
-      </li>
-     
+      </li>     
     </ul>
 
-    <div>
+    <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Buscar" (keyup.enter)="buscarPelicula(buscarTexto.value)" #buscarTexto >
-      <button (click)="buscarPelicula(buscarTexto.value)" class="btn btn-outline-primary my-2 my-sm-0" type="button">Buscar</button>
-    </div>
+      <button (click)="buscarPelicula(buscarTexto.value)" class="btn btn-outline-primary my-2 my-sm-0" type="button">Buscar</button>  
+    </form>
   </div>
 </nav>
